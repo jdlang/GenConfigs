@@ -8,4 +8,3 @@ versions for each step:
 * AODSIM: CMSSW_14_1_9_patch3
 * MINIAODSIM: CMSSW_14_1_9_patch3
 
-See MakeMCDriverConfigs.sh for details of the commands used.
