@@ -1,0 +1,42 @@
+Pythia8_PromptJpsiToMuMu_ResolvedPhoton
+10000 events submitted locally on lxplus8 for GEN-SIM
+
+el8_amd64_gcc12
+CMSSW_14_1_9_patch3
+Pythia 8.311
+EvtGen130
+
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+Before Filter: total cross section = 4.237e+07 +- 5.704e+04 pb
+Filter efficiency (taking into account weights)= (2192) / (10000) = 2.192e-01 +- 4.137e-03
+Filter efficiency (event-level)= (2192) / (10000) = 2.192e-01 +- 4.137e-03    [TO BE USED IN MCM]
+
+After filter: final cross section = 9.288e+06 +- 1.757e+05 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 1.077e-04 +- 2.040e-06
+TimeReport> Time report complete in 1178.36 seconds
+ Time Summary: 
+ - Min event:   0.000493711
+ - Max event:   3.44563
+ - Avg event:   0.111637
+ - Total loop:  1171.14
+ - Total init:  7.20336
+ - Total job:   1178.36
+ - Total EventSetup: 23.531
+ - Total non-module: 3.46
+ Event Throughput: 8.53867 ev/s
+ CPU Summary: 
+ - Total loop:     1164.7
+ - Total init:     3.75738
+ - Total extra:    0
+ - Total children: 0.072843
+ - Total job:      1168.47
+ Processing Summary: 
+ - Number of Events:  10000
+ - Number of Global Begin Lumi Calls:  1
+ - Number of Global Begin Run Calls: 1
+
+Thanks for using LHAPDF 6.4.0. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)

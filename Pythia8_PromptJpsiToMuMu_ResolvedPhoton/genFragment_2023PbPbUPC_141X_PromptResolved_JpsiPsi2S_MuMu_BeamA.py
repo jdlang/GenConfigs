@@ -27,16 +27,16 @@ generator = cms.EDFilter(
         processParameters = cms.vstring(
             # Set this to 0 for inclusive photons:
             'Photon:ProcessType = 0',
-            'MultipartonInteractions:pT0Ref = 3.0',
+            'Photon:sampleQ2 = off',
             # Have the photon coming from beam A:
             'PDF:beamA2gamma = on',
             'PDF:beamB2gamma = off',
             'PDF:proton2gammaSet = 0',
-            # add nuclear modifications to beam B:
-            'PDF:pSetB = LHAPDF6:EPPS21nlo_CT18Anlo_Pb208',
             'PDF:gammaFluxApprox2bMin = 13.272',
             'PDF:beam2gammaApprox = 2',
-            'Photon:sampleQ2 = off',
+            # add nuclear modifications to beam B:
+            'PDF:pSetB = LHAPDF6:EPPS21nlo_CT18Anlo_Pb208',
+            'MultipartonInteractions:pT0Ref = 3.0',
             # Allow feed-down:
             'Charmonium:all = on'
         ),
@@ -52,7 +52,7 @@ generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)
 # Filter on J/psi in event
 oniafilter = cms.EDFilter(
     "MCMultiParticleFilter",
-    ParticleID = cms.vint32(443), # J/psi
+    ParticleID = cms.vint32(443),
     Status = cms.vint32(2),
     PtMin = cms.vdouble(0.0),
     PMin = cms.vdouble(0.0),

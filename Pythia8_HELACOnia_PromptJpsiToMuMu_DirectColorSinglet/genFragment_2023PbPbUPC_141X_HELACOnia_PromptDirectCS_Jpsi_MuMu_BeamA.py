@@ -1,22 +1,22 @@
+# HELAC-Onia 2.7.6 + Pythia 8.311 + EventGen 1.30
+# Direct-Photon Color Singlet (DirectCS), Pompt J/psi->mumu
+
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Generator.Pythia8CommonSettings_cfi import pythia8CommonSettingsBlock
 from Configuration.Generator.Pythia8PhotonFluxSettings_cfi import PhotonFlux_PbPb
 from GeneratorInterface.EvtGenInterface.EvtGenSetting_cff import EvtGenExtraParticles
-from GeneratorInterface.LHEInterface.ExternalLHEProducer_cfi import externalLHEProducer
+#from GeneratorInterface.LHEInterface.ExternalLHEProducer_cfi import externalLHEProducer
 
+# HELAC-Onia supplies gamma(-z) g(+z) -> J/psi[3S1(1)] g via LHE file.
+# The input to Pythia must contain an undecayed colour-singlet J/psi (PDG 443).
+# LHE sets the photon flux, target PDF, hard-process cuts and normalization.
 externalLHEProducer = cms.EDProducer(
     "ExternalLHEProducer",
-#    # FIXME: For official MC we need the gridpack hosted in this cvmfs path:
-#    args = cms.vstring(
-#        "/cvmfs/cms.cern.ch/phys_generator/gridpacks/RunIII/5p36TeV/..."
-#    ),
-#    scriptName = cms.FileInPath(
-#        'GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh'
-#    ),
-    # Temp settings for private MC - gridpack accessed through xrootd path:
+#    FIXME: For official MC we need the gridpack hosted on this cvmfs path:
+#    "/cvmfs/cms.cern.ch/phys_generator/gridpacks/RunIII/5p36TeV/..."
     args = cms.vstring(
-        "root://xrootd-vanderbilt.sites.opensciencegrid.org//store/user/jdlang/CMSSW_MC_Gridpacks/helaconia_directCS_jpsi_dimuon_el9_amd64_gcc12_CMSSW_14_1_9_patch3_tarball.tar.gz"
+        "root://xrootd-vanderbilt.sites.opensciencegrid.org//store/user/jdlang/CMSSW_MC_Gridpacks/helaconia_directCS_jpsi_dimuon_beamA_el8_amd64_gcc12_CMSSW_14_1_9_patch3_tarball.tar.gz"
     ),
     scriptName = cms.FileInPath(
         'GeneratorInterface/LHEInterface/data/run_generic_tarball_xrootd.sh'
@@ -28,6 +28,7 @@ externalLHEProducer = cms.EDProducer(
     storeXML = cms.untracked.bool(False),
 )
 
+# Hadronization and decay is handled by Pythia + EvtGen (forcing J/psi->mumu)
 generator = cms.EDFilter(
     "Pythia8HadronizerFilter",
     maxEventsToPrint = cms.untracked.int32(1),
@@ -35,7 +36,7 @@ generator = cms.EDFilter(
     filterEfficiency = cms.untracked.double(1.0),
     pythiaHepMCVerbosity = cms.untracked.bool(False),
     comEnergy = cms.double(5362.),
-    PhotonFlux = PhotonFlux_PbPb,
+    PhotonFlux = PhotonFlux_PbPb, # Requires Pythia8ExternalPhoton_141X compatibility patch
     ExternalDecays=cms.PSet(
         EvtGen130 = cms.untracked.PSet(
             decay_table = cms.string('GeneratorInterface/EvtGenInterface/data/DECAY_2020_NOLONGLIFE.DEC'),
@@ -47,7 +48,6 @@ generator = cms.EDFilter(
         ),
         parameterSets=cms.vstring('EvtGen130'),
     ),
-    # Requires the supplied Pythia8ExternalPhoton_141X compatibility patch.
     PythiaParameters=cms.PSet(
         pythia8CommonSettingsBlock,
         processParameters=cms.vstring(
@@ -58,11 +58,17 @@ generator = cms.EDFilter(
             'PDF:beamA2gamma = on',
             'PDF:beamB2gamma = off',
             'PDF:proton2gammaSet = 0',
+            # Retain the existing target shower PDF and UPC shower settings.
+            # The LHE hard cross section must use the same target nPDF choice.
             'PDF:pSetB = LHAPDF6:EPPS21nlo_CT18Anlo_Pb208',
             'MultipartonInteractions:pT0Ref = 3.0',
             'PDF:beam2gammaApprox = 2',
             'PDF:gammaFluxApprox2bMin = 13.272',
-            'Photon:sampleQ2 = off',
+            # These last two settings control a sampling approximation, not
+            # the physical flux. The LHE must already contain the original
+            # Nucleus2gamma2 Pb flux: Z=82, R=6.636 fm, bmin=2R.
+            # The compatibility patch installs PhotonFlux_PbPb for external
+            # partons too. Pythia does not reweight the LHE hard cross section.
         ),
         parameterSets=cms.vstring(
             'pythia8CommonSettings',
@@ -72,4 +78,5 @@ generator = cms.EDFilter(
 )
 generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)
 
+# Keep every successfully showered event; acceptance cuts belong in the analysis.
 ProductionFilterSequence = cms.Sequence(generator)

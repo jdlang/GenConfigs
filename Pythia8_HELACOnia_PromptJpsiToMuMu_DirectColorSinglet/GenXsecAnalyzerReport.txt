@@ -1,0 +1,53 @@
+Pythia8_HELACOnia_PromptJpsiToMuMu_DirectColorSinglet
+5000 events submitted locally on lxplus8 for GEN-SIM-LHE
+
+el8_amd64_gcc12
+CMSSW_14_1_9_patch3
+Pythia 8.311
+HELAC-Onia 2.7.6
+EvtGen130
+
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+Overall cross-section summary 
+-----------------------------------------------------------------------------------------------------------------------
+Process		xsec_before [pb]		passed	nposw	nnegw	tried	nposw	nnegw 	xsec_match [pb]			accepted [%]	 event_eff [%]
+0		1.163e+07 +/- 2.899e+04		4909	4909	0	5000	5000	0	1.142e+07 +/- 3.596e+04		98.2 +/- 0.2	98.2 +/- 0.2
+-----------------------------------------------------------------------------------------------------------------------
+Total		1.163e+07 +/- 2.899e+04		4909	4909	0	5000	5000	0	1.142e+07 +/- 3.596e+04		98.2 +/- 0.2	98.2 +/- 0.2
+-----------------------------------------------------------------------------------------------------------------------
+Before matching: total cross section = 1.163e+07 +- 2.899e+04 pb
+After matching: total cross section = 1.142e+07 +- 3.596e+04 pb
+Matching efficiency = 1.0 +/- 0.0   [TO BE USED IN MCM]
+Filter efficiency (taking into account weights)= (4909) / (4909) = 1.000e+00 +- 0.000e+00
+Filter efficiency (event-level)= (4909) / (4909) = 1.000e+00 +- 0.000e+00    [TO BE USED IN MCM]
+
+After filter: final cross section = 1.142e+07 +- 3.596e+04 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 8.759e-05 +- 2.895e-07
+TimeReport> Time report complete in 1081.16 seconds
+ Time Summary: 
+ - Min event:   0.00011551
+ - Max event:   2.16905
+ - Avg event:   0.181323
+ - Total loop:  1074.54
+ - Total init:  6.60606
+ - Total job:   1081.16
+ - Total EventSetup: 23.2569
+ - Total non-module: 2.8289
+ Event Throughput: 4.65314 ev/s
+ CPU Summary: 
+ - Total loop:     1056.55
+ - Total init:     3.65247
+ - Total extra:    0
+ - Total children: 108.417
+ - Total job:      1060.22
+ Processing Summary: 
+ - Number of Events:  5000
+ - Number of Global Begin Lumi Calls:  1
+ - Number of Global Begin Run Calls: 1
+
+Thanks for using LHAPDF 6.4.0. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)
