@@ -1,5 +1,5 @@
 # HELAC-Onia 2.7.6 + Pythia 8.311 + EventGen 1.30
-# Direct-Photon Color Singlet (DirectCS), Pompt J/psi->mumu
+# Direct-Photon Color Singlet (DirectCS), Prompt J/psi->mumu
 
 import FWCore.ParameterSet.Config as cms
 
