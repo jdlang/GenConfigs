@@ -7,43 +7,96 @@ Pythia 8.311
 HELAC-Onia 2.7.6
 EvtGen130
 
+
+
+
+Photon from Beam A:
 ------------------------------------
 GenXsecAnalyzer:
 ------------------------------------
------------------------------------------------------------------------------------------------------------------------
-Overall cross-section summary
------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Overall cross-section summary 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Process		xsec_before [pb]		passed	nposw	nnegw	tried	nposw	nnegw 	xsec_match [pb]			accepted [%]	 event_eff [%]
-0		2.286e+11 +/- 1.335e+11		959	959	0	1000	1000	0	2.192e+11 +/- 1.280e+11		95.9 +/- 0.6	95.9 +/- 0.6
------------------------------------------------------------------------------------------------------------------------
-Total		2.286e+11 +/- 1.335e+11		959	959	0	1000	1000	0	2.192e+11 +/- 1.280e+11		95.9 +/- 0.6	95.9 +/- 0.6
------------------------------------------------------------------------------------------------------------------------
-Before matching: total cross section = 2.286e+11 +- 1.335e+11 pb
-After matching: total cross section = 2.192e+11 +- 1.280e+11 pb
+0		5.148e+08 +/- 1.292e+07		997	997	0	1000	1000	0	5.135e+08 +/- 1.291e+07		99.7 +/- 0.2	99.7 +/- 0.2
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Total		5.148e+08 +/- 1.292e+07		997	997	0	1000	1000	0	5.135e+08 +/- 1.291e+07		99.7 +/- 0.2	99.7 +/- 0.2
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Before matching: total cross section = 5.148e+08 +- 1.292e+07 pb
+After matching: total cross section = 5.135e+08 +- 1.291e+07 pb
 Matching efficiency = 1.0 +/- 0.0   [TO BE USED IN MCM]
-Filter efficiency (taking into account weights)= (959) / (959) = 1.000e+00 +- 0.000e+00
-Filter efficiency (event-level)= (959) / (959) = 1.000e+00 +- 0.000e+00    [TO BE USED IN MCM]
+Filter efficiency (taking into account weights)= (5.13458e+11) / (5.13458e+11) = 1.000e+00 +- 0.000e+00
+Filter efficiency (event-level)= (997) / (997) = 1.000e+00 +- 0.000e+00    [TO BE USED IN MCM]
 
-After filter: final cross section = 2.192e+11 +- 1.280e+11 pb
+After filter: final cross section = 5.135e+08 +- 1.291e+07 pb
 After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
-After filter: final equivalent lumi for 1M events (1/fb) = 4.561e-09 +- 2.663e-09
-TimeReport> Time report complete in 272.065 seconds
+After filter: final equivalent lumi for 1M events (1/fb) = 1.948e-06 +- 4.900e-08
+TimeReport> Time report complete in 392.312 seconds
  Time Summary: 
- - Min event:   0.000126682
- - Max event:   0.889987
- - Avg event:   0.131643
- - Total loop:  264.239
- - Total init:  7.81671
- - Total job:   272.065
- - Total EventSetup: 25.449
- - Total non-module: 0.633003
- Event Throughput: 3.78446 ev/s
+ - Min event:   0.00027499
+ - Max event:   0.950541
+ - Avg event:   0.276019
+ - Total loop:  385.412
+ - Total init:  6.88805
+ - Total job:   392.312
+ - Total EventSetup: 23.6181
+ - Total non-module: 0.735565
+ Event Throughput: 2.59462 ev/s
  CPU Summary: 
- - Total loop:     250.823
- - Total init:     4.28235
+ - Total loop:     375.588
+ - Total init:     3.63352
  - Total extra:    0
- - Total children: 76.6134
- - Total job:      255.115
+ - Total children: 58.7291
+ - Total job:      379.233
+ Processing Summary: 
+ - Number of Events:  1000
+ - Number of Global Begin Lumi Calls:  1
+ - Number of Global Begin Run Calls: 1
+
+Thanks for using LHAPDF 6.4.0. Please make sure to cite the paper:
+  Eur.Phys.J. C75 (2015) 3, 132  (http://arxiv.org/abs/1412.7420)
+
+
+
+
+Photon from Beam B:
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Overall cross-section summary 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Process		xsec_before [pb]		passed	nposw	nnegw	tried	nposw	nnegw 	xsec_match [pb]			accepted [%]	 event_eff [%]
+0		4.559e+08 +/- 1.051e+07		999	999	0	1000	1000	0	4.555e+08 +/- 1.051e+07		99.9 +/- 0.1	99.9 +/- 0.1
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Total		4.559e+08 +/- 1.051e+07		999	999	0	1000	1000	0	4.555e+08 +/- 1.051e+07		99.9 +/- 0.1	99.9 +/- 0.1
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Before matching: total cross section = 4.559e+08 +- 1.051e+07 pb
+After matching: total cross section = 4.555e+08 +- 1.051e+07 pb
+Matching efficiency = 1.0 +/- 0.0   [TO BE USED IN MCM]
+Filter efficiency (taking into account weights)= (4.55484e+11) / (4.55484e+11) = 1.000e+00 +- 0.000e+00
+Filter efficiency (event-level)= (999) / (999) = 1.000e+00 +- 0.000e+00    [TO BE USED IN MCM]
+
+After filter: final cross section = 4.555e+08 +- 1.051e+07 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 2.195e-06 +- 5.072e-08
+TimeReport> Time report complete in 366.674 seconds
+ Time Summary: 
+ - Min event:   0.00240971
+ - Max event:   1.20224
+ - Avg event:   0.258234
+ - Total loop:  359.112
+ - Total init:  7.5504
+ - Total job:   366.674
+ - Total EventSetup: 23.9591
+ - Total non-module: 0.718275
+ Event Throughput: 2.78465 ev/s
+ CPU Summary: 
+ - Total loop:     349.105
+ - Total init:     3.71863
+ - Total extra:    0
+ - Total children: 48.9568
+ - Total job:      352.835
  Processing Summary: 
  - Number of Events:  1000
  - Number of Global Begin Lumi Calls:  1

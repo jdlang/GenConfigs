@@ -16,7 +16,7 @@ externalLHEProducer = cms.EDProducer(
 #    FIXME: For official MC we need the gridpack hosted on this cvmfs path:
 #    "/cvmfs/cms.cern.ch/phys_generator/gridpacks/RunIII/5p36TeV/..."
     args = cms.vstring(
-        "root://xrootd-vanderbilt.sites.opensciencegrid.org//store/user/jdlang/CMSSW_MC_Gridpacks/helaconia_directCS_jpsi_dimuon_beamA_el8_amd64_gcc12_CMSSW_14_1_9_patch3_tarball.tar.gz"
+        "root://eoscms.cern.ch//store/group/phys_heavyions/jdlang/gridpacks/helaconia_directCS_jpsi_dimuon_beamA_el8_amd64_gcc12_CMSSW_14_1_9_patch3_tarball.tar.gz"
     ),
     scriptName = cms.FileInPath(
         'GeneratorInterface/LHEInterface/data/run_generic_tarball_xrootd.sh'
@@ -53,7 +53,7 @@ generator = cms.EDFilter(
         processParameters=cms.vstring(
             # CMSSW supplies the LHAup interface; do not set Beams:LHEF here.
             'PartonLevel:all = on',
-            'Photon:ProcessType = 3',
+            'Photon:ProcessType = 3', # photon from beam A, nucleus from beam B
             'Photon:sampleQ2 = off',
             'PDF:beamA2gamma = on',
             'PDF:beamB2gamma = off',

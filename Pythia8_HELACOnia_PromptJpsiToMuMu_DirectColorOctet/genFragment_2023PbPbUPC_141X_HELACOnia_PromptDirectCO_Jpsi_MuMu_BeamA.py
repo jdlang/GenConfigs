@@ -8,7 +8,7 @@ from Configuration.Generator.Pythia8PhotonFluxSettings_cfi import PhotonFlux_PbP
 from GeneratorInterface.EvtGenInterface.EvtGenSetting_cff import EvtGenExtraParticles
 #from GeneratorInterface.LHEInterface.ExternalLHEProducer_cfi import externalLHEProducer
 
-# HELAC-Onia supplies gamma(+z) g(-z) -> ccbar[3S1(8)] g via LHE file.
+# HELAC-Onia supplies gamma(+z) g(-z) -> ccbar[1S0(8)] g via LHE file.
 # Outgoing LHE octet is mapped to PYTHIA 8 ID 9941003 by `prepare_lhe.py`.
 # LHE sets the photon flux, target PDF, hard-process cuts and normalization.
 externalLHEProducer = cms.EDProducer(
@@ -16,7 +16,7 @@ externalLHEProducer = cms.EDProducer(
 #    FIXME: For official MC we need the gridpack hosted on this cvmfs path:
 #    "/cvmfs/cms.cern.ch/phys_generator/gridpacks/RunIII/5p36TeV/..."
     args = cms.vstring(
-        "root://xrootd-vanderbilt.sites.opensciencegrid.org//store/user/jdlang/CMSSW_MC_Gridpacks/helaconia_directCO_jpsi_dimuon_beamA_el8_amd64_gcc12_CMSSW_14_1_9_patch3_tarball.tar.gz"
+        "root://eoscms.cern.ch//store/group/phys_heavyions/jdlang/gridpacks/helaconia_directCO_jpsi_dimuon_beamA_el8_amd64_gcc12_CMSSW_14_1_9_patch3_tarball.tar.gz"
     ),
     scriptName = cms.FileInPath(
         'GeneratorInterface/LHEInterface/data/run_generic_tarball_xrootd.sh'
@@ -54,7 +54,7 @@ generator = cms.EDFilter(
         processParameters=cms.vstring(
             # CMSSW supplies the LHAup interface; do not set Beams:LHEF here.
             'PartonLevel:all = on',
-            'Photon:ProcessType = 3',
+            'Photon:ProcessType = 3', # photon from beam A, nucleus from beam B
             'Photon:sampleQ2 = off',
             'PDF:beamA2gamma = on',
             'PDF:beamB2gamma = off',
